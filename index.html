@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>CYG Fellowship Ice Breaker</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -18,10 +17,9 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
+background:linear-gradient(135deg,#667eea,#764ba2);
+padding:20px;
 min-height:100vh;
-padding:25px;
-background:
-linear-gradient(135deg,#667eea 0%,#764ba2 100%);
 }
 
 .header{
@@ -31,62 +29,49 @@ margin-bottom:25px;
 }
 
 .header h1{
-font-size:2.5rem;
-font-weight:700;
+font-size:2.2rem;
+margin-bottom:10px;
 }
 
-.header p{
-margin-top:8px;
-font-size:1rem;
-opacity:0.9;
-}
-
-.progress-box{
-max-width:1000px;
+.progress{
+max-width:900px;
 margin:auto;
-margin-bottom:20px;
 background:rgba(255,255,255,0.15);
-backdrop-filter:blur(15px);
+backdrop-filter:blur(10px);
 padding:15px;
-border-radius:18px;
-color:white;
+border-radius:15px;
 text-align:center;
+color:white;
 font-size:1.2rem;
-font-weight:600;
+font-weight:bold;
+margin-bottom:20px;
 }
 
 .grid{
-max-width:1200px;
+max-width:900px;
 margin:auto;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:18px;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
 }
 
 .card{
 background:rgba(255,255,255,0.18);
-backdrop-filter:blur(18px);
-border-radius:22px;
+backdrop-filter:blur(12px);
 padding:15px;
-border:1px solid rgba(255,255,255,0.25);
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-4px);
+border-radius:20px;
+border:1px solid rgba(255,255,255,0.3);
 }
 
 .completed{
-border:3px solid #00ff99;
-box-shadow:0 0 18px rgba(0,255,153,.7);
+border:3px solid #00ff88;
 }
 
 .task{
-font-weight:700;
 color:white;
-font-size:1rem;
-margin-bottom:12px;
-min-height:55px;
+font-weight:600;
+margin-bottom:10px;
+min-height:48px;
 }
 
 .nameInput{
@@ -95,7 +80,16 @@ padding:10px;
 border:none;
 border-radius:10px;
 margin-bottom:10px;
-font-size:14px;
+}
+
+.photoBtn{
+width:100%;
+padding:10px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+margin-bottom:10px;
 }
 
 .photo{
@@ -104,26 +98,13 @@ height:180px;
 object-fit:cover;
 border-radius:12px;
 display:none;
-margin-top:10px;
-}
-
-.uploadBtn{
-display:block;
-width:100%;
-padding:10px;
-border:none;
-border-radius:10px;
-background:white;
-font-weight:600;
-cursor:pointer;
-margin-top:5px;
 }
 
 .status{
-margin-top:8px;
-font-weight:600;
-color:#d4ffd4;
 display:none;
+margin-top:8px;
+font-weight:bold;
+color:#ccffcc;
 }
 
 #success{
@@ -134,38 +115,37 @@ left:0;
 width:100%;
 height:100%;
 background:rgba(0,0,0,.85);
-z-index:999;
 justify-content:center;
 align-items:center;
-text-align:center;
-padding:20px;
+z-index:999;
 }
 
-.success-content{
+.successBox{
 background:white;
 padding:40px;
-border-radius:25px;
-max-width:500px;
+border-radius:20px;
+text-align:center;
+max-width:400px;
 }
 
-.success-content h2{
-font-size:2rem;
+.successBox h2{
 color:#27ae60;
 margin-bottom:15px;
 }
 
-.success-content p{
-font-size:1.2rem;
-}
-
-@media(max-width:600px){
-
-.header h1{
-font-size:1.8rem;
-}
+@media(max-width:768px){
 
 .grid{
-grid-template-columns:1fr;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.task{
+font-size:14px;
+}
+
+.photo{
+height:120px;
 }
 
 }
@@ -177,10 +157,10 @@ grid-template-columns:1fr;
 
 <div class="header">
 <h1>🎉 CYG FELLOWSHIP ICE BREAKER</h1>
-<p>Find someone who matches each description, enter their name and take a selfie together!</p>
+<p>Find someone, enter their name, and take a selfie together!</p>
 </div>
 
-<div class="progress-box">
+<div class="progress">
 Completed: <span id="count">0</span> / 10
 </div>
 
@@ -188,90 +168,90 @@ Completed: <span id="count">0</span> / 10
 
 <div class="card">
 <div class="task">🎂 Birthday in June / July / August</div>
-<input class="nameInput" placeholder="Enter name">
-<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
-<button class="uploadBtn">📸 Take Selfie</button>
+<input class="nameInput" placeholder="Enter Name">
+<input type="file" accept="image/*" capture="environment" hidden onchange="uploadPhoto(this)">
+<button class="photoBtn">📸 Take Selfie</button>
 <img class="photo">
 <div class="status">✅ Completed</div>
 </div>
 
 <div class="card">
 <div class="task">🐶 Has a Pet</div>
-<input class="nameInput" placeholder="Enter name">
-<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
-<button class="uploadBtn">📸 Take Selfie</button>
+<input class="nameInput" placeholder="Enter Name">
+<input type="file" accept="image/*" capture="environment" hidden onchange="uploadPhoto(this)">
+<button class="photoBtn">📸 Take Selfie</button>
 <img class="photo">
 <div class="status">✅ Completed</div>
 </div>
 
 <div class="card">
 <div class="task">🌶 Loves Spicy Food</div>
-<input class="nameInput" placeholder="Enter name">
-<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
-<button class="uploadBtn">📸 Take Selfie</button>
+<input class="nameInput" placeholder="Enter Name">
+<input type="file" accept="image/*" capture="environment" hidden onchange="uploadPhoto(this)">
+<button class="photoBtn">📸 Take Selfie</button>
 <img class="photo">
 <div class="status">✅ Completed</div>
 </div>
 
 <div class="card">
 <div class="task">🙋 New at CYG</div>
-<input class="nameInput" placeholder="Enter name">
-<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
-<button class="uploadBtn">📸 Take Selfie</button>
+<input class="nameInput" placeholder="Enter Name">
+<input type="file" accept="image/*" capture="environment" hidden onchange="uploadPhoto(this)">
+<button class="photoBtn">📸 Take Selfie</button>
 <img class="photo">
 <div class="status">✅ Completed</div>
 </div>
 
 <div class="card">
-<div class="task">📏 About the Same Height as You</div>
-<input class="nameInput" placeholder="Enter name">
-<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
-<button class="uploadBtn">📸 Take Selfie</button>
+<div class="task">📏 Same Height as You</div>
+<input class="nameInput" placeholder="Enter Name">
+<input type="file" accept="image/*" capture="environment" hidden onchange="uploadPhoto(this)">
+<button class="photoBtn">📸 Take Selfie</button>
 <img class="photo">
 <div class="status">✅ Completed</div>
 </div>
 
 <div class="card">
 <div class="task">🏠 Lives Alone</div>
-<input class="nameInput" placeholder="Enter name">
-<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
-<button class="uploadBtn">📸 Take Selfie</button>
+<input class="nameInput" placeholder="Enter Name">
+<input type="file" accept="image/*" capture="environment" hidden onchange="uploadPhoto(this)">
+<button class="photoBtn">📸 Take Selfie</button>
 <img class="photo">
 <div class="status">✅ Completed</div>
 </div>
 
 <div class="card">
 <div class="task">🎨 Wearing Their Favorite Color</div>
-<input class="nameInput" placeholder="Enter name">
-<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
-<button class="uploadBtn">📸 Take Selfie</button>
+<input class="nameInput" placeholder="Enter Name">
+<input type="file" accept="image/*" capture="environment" hidden onchange="uploadPhoto(this)">
+<button class="photoBtn">📸 Take Selfie</button>
 <img class="photo">
 <div class="status">✅ Completed</div>
 </div>
 
 <div class="card">
 <div class="task">👥 MGC Group Member</div>
-<input class="nameInput" placeholder="Enter name">
-<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
-<button class="uploadBtn">📸 Take Selfie</button>
+<input class="nameInput" placeholder="Enter Name">
+<input type="file" accept="image/*" capture="environment" hidden onchange="uploadPhoto(this)">
+<button class="photoBtn">📸 Take Selfie</button>
 <img class="photo">
 <div class="status">✅ Completed</div>
 </div>
 
 <div class="card">
-<div class="task">💬 Someone You Want to Know More</div>
-<input class="nameInput" placeholder="Enter name">
-<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
-<button class="uploadBtn">📸 Take Selfie</button>
+<div class="task">💬 Someone You Want To Know More</div>
+<input class="nameInput" placeholder="Enter Name">
+<input type="file" accept="image/*" capture="environment" hidden onchange="uploadPhoto(this)">
+<button class="photoBtn">📸 Take Selfie</button>
 <img class="photo">
 <div class="status">✅ Completed</div>
 </div>
 
 <div class="card">
-<div class="task">📱 Has 500+ Friends/Followers on Social Media</div>
-<input class="nameInput" placeholder="Enter name">
-<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
-<button class="uploadBtn">📸 Take Selfie</button>
+<div class="task">📱 Has 500+ Friends/Followers</div>
+<input class="nameInput" placeholder="Enter Name">
+<input type="file" accept="image/*" capture="environment" hidden onchange="uploadPhoto(this)">
+<button class="photoBtn">📸 Take Selfie</button>
 <img class="photo">
 <div class="status">✅ Completed</div>
 </div>
@@ -279,19 +259,23 @@ Completed: <span id="count">0</span> / 10
 </div>
 
 <div id="success">
-<div class="success-content">
+<div class="successBox">
 <h2>🏆 Congratulations!</h2>
 <p>You completed the CYG Fellowship Ice Breaker!</p>
-<br>
-<p>🎉 Great job meeting new people! 🎉</p>
 </div>
 </div>
 
 <script>
 
-document.querySelectorAll('.uploadBtn').forEach(btn=>{
+document.querySelectorAll('.photoBtn').forEach(btn=>{
 btn.addEventListener('click',()=>{
 btn.previousElementSibling.click();
+});
+});
+
+document.querySelectorAll('.nameInput').forEach(input=>{
+input.addEventListener('input',()=>{
+checkCard(input.closest('.card'));
 });
 });
 
@@ -315,18 +299,7 @@ checkCard(card);
 }
 
 reader.readAsDataURL(file);
-
 }
-
-document.querySelectorAll('.nameInput').forEach(input=>{
-
-input.addEventListener('input',()=>{
-
-checkCard(input.closest('.card'));
-
-});
-
-});
 
 function checkCard(card){
 
@@ -346,7 +319,6 @@ card.querySelector('.status').style.display='none';
 }
 
 updateProgress();
-
 }
 
 function updateProgress(){
@@ -356,9 +328,7 @@ const completed=document.querySelectorAll('.completed').length;
 document.getElementById('count').innerText=completed;
 
 if(completed===10){
-
 document.getElementById('success').style.display='flex';
-
 }
 
 }
