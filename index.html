@@ -1,25 +1,108 @@
-getElementById(`placeholder-${i}`).classList.add('hidden');
-                        document.getElementById(`action-${i}`).classList.add('hidden');
-                        document.getElementById(`card-${i}`).classList.add('stamped');
-                        
-                        // Progress
-                        completed++;
-                        document.getElementById('progress-bar').style.width = (completed * 10) + '%';
-                        document.getElementById('stat-count').innerText = completed + ' / 10 Completed';
-                        
-                        if(completed === 10) {
-                            setTimeout(() => alert("🎊 AMAZING! You've completed the MGC New Life Bingo!"), 500);
-                        }
-                    }
-                    reader.readAsDataURL(fileInput.files[0]);
-                }
-            }
-        </script>
-    </main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CYG FELLOWSHIP ICE BREAKER</title>
 
-    <footer class="text-center py-12 opacity-20 text-[10px] tracking-widest">
-        &copy; 2026 MGC NEW LIFE CHRISTIAN ACADEMY
-    </footer>
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f5f7fa;
+    text-align:center;
+    padding:20px;
+}
+
+h1{
+    color:#2c3e50;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.cell{
+    background:white;
+    border:2px solid #34495e;
+    border-radius:10px;
+    padding:15px;
+    min-height:100px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+.cell:hover{
+    transform:scale(1.03);
+}
+
+.done{
+    background:#90EE90;
+}
+
+@media(max-width:768px){
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎉 CYG FELLOWSHIP ICE BREAKER 🎉</h1>
+<h2>Human Selfie Bingo</h2>
+
+<p>Click a box after taking a selfie!</p>
+
+<div class="grid">
+
+<div class="cell">Selfie with someone from another country</div>
+<div class="cell">Selfie with someone wearing glasses</div>
+<div class="cell">Selfie with a musician</div>
+<div class="cell">Selfie with someone older than you</div>
+<div class="cell">Selfie with a left-handed person</div>
+
+<div class="cell">Selfie with someone who loves coffee</div>
+<div class="cell">Selfie with a sports lover</div>
+<div class="cell">Selfie with someone born in January</div>
+<div class="cell">Selfie with someone who speaks 2+ languages</div>
+<div class="cell">Selfie with someone who likes cats</div>
+
+<div class="cell">Selfie with someone who likes dogs</div>
+<div class="cell">Selfie with a first-time attendee</div>
+<div class="cell">⭐ FREE SPACE ⭐</div>
+<div class="cell">Selfie with someone who plays games</div>
+<div class="cell">Selfie with someone wearing blue</div>
+
+<div class="cell">Selfie with someone who has traveled abroad</div>
+<div class="cell">Selfie with someone who sings</div>
+<div class="cell">Selfie with someone who likes spicy food</div>
+<div class="cell">Selfie with someone who loves reading</div>
+<div class="cell">Selfie with a leader</div>
+
+<div class="cell">Selfie with someone taller than you</div>
+<div class="cell">Selfie with someone shorter than you</div>
+<div class="cell">Selfie with someone whose birthday is this month</div>
+<div class="cell">Selfie with someone wearing white</div>
+<div class="cell">Selfie with someone you just met today</div>
+
+</div>
+
+<script>
+document.querySelectorAll('.cell').forEach(cell=>{
+    cell.addEventListener('click',()=>{
+        cell.classList.toggle('done');
+    });
+});
+</script>
 
 </body>
 </html>
