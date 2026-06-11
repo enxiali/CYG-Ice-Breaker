@@ -3,105 +3,244 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CYG FELLOWSHIP ICE BREAKER</title>
+<title>CYG Fellowship Ice Breaker</title>
 
 <style>
 body{
     font-family: Arial, sans-serif;
-    background:#f5f7fa;
-    text-align:center;
+    background:#f4f6f8;
+    margin:0;
     padding:20px;
+    text-align:center;
 }
 
 h1{
     color:#2c3e50;
+    margin-bottom:5px;
+}
+
+.subtitle{
+    color:#666;
+    margin-bottom:20px;
+}
+
+#progress{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:20px;
 }
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:10px;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
     max-width:1000px;
     margin:auto;
 }
 
-.cell{
+.card{
     background:white;
-    border:2px solid #34495e;
-    border-radius:10px;
-    padding:15px;
-    min-height:100px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    cursor:pointer;
+    border-radius:15px;
+    padding:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.15);
+}
+
+.task{
     font-weight:bold;
-    transition:0.2s;
+    min-height:50px;
+    margin-bottom:10px;
 }
 
-.cell:hover{
-    transform:scale(1.03);
+.nameInput{
+    width:95%;
+    padding:8px;
+    margin-bottom:10px;
+    border-radius:8px;
+    border:1px solid #ccc;
 }
 
-.done{
-    background:#90EE90;
+.photo{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:10px;
+    border:1px solid #ddd;
+    display:none;
+}
+
+.uploadBtn{
+    margin-top:8px;
+    padding:8px 12px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    background:#3498db;
+    color:white;
+}
+
+.completed{
+    border:3px solid #2ecc71;
 }
 
 @media(max-width:768px){
     .grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:1fr;
     }
+}
+
+#success{
+    display:none;
+    margin-top:25px;
+    font-size:26px;
+    color:#27ae60;
+    font-weight:bold;
 }
 </style>
 </head>
-
 <body>
 
-<h1>🎉 CYG FELLOWSHIP ICE BREAKER 🎉</h1>
-<h2>Human Selfie Bingo</h2>
+<h1>🎉 CYG FELLOWSHIP ICE BREAKER</h1>
 
-<p>Click a box after taking a selfie!</p>
+<div class="subtitle">
+Find someone who matches each description.<br>
+Enter their name and take a selfie together!
+</div>
+
+<div id="progress">Completed: 0 / 10</div>
 
 <div class="grid">
 
-<div class="cell">Selfie with someone from another country</div>
-<div class="cell">Selfie with someone wearing glasses</div>
-<div class="cell">Selfie with a musician</div>
-<div class="cell">Selfie with someone older than you</div>
-<div class="cell">Selfie with a left-handed person</div>
+<div class="card">
+<div class="task">🎂 Birthday in June / July / August</div>
+<input class="nameInput" placeholder="Enter name">
+<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
+<img class="photo">
+</div>
 
-<div class="cell">Selfie with someone who loves coffee</div>
-<div class="cell">Selfie with a sports lover</div>
-<div class="cell">Selfie with someone born in January</div>
-<div class="cell">Selfie with someone who speaks 2+ languages</div>
-<div class="cell">Selfie with someone who likes cats</div>
+<div class="card">
+<div class="task">🐶 Has a pet</div>
+<input class="nameInput" placeholder="Enter name">
+<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
+<img class="photo">
+</div>
 
-<div class="cell">Selfie with someone who likes dogs</div>
-<div class="cell">Selfie with a first-time attendee</div>
-<div class="cell">⭐ FREE SPACE ⭐</div>
-<div class="cell">Selfie with someone who plays games</div>
-<div class="cell">Selfie with someone wearing blue</div>
+<div class="card">
+<div class="task">🌶 Loves spicy food</div>
+<input class="nameInput" placeholder="Enter name">
+<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
+<img class="photo">
+</div>
 
-<div class="cell">Selfie with someone who has traveled abroad</div>
-<div class="cell">Selfie with someone who sings</div>
-<div class="cell">Selfie with someone who likes spicy food</div>
-<div class="cell">Selfie with someone who loves reading</div>
-<div class="cell">Selfie with a leader</div>
+<div class="card">
+<div class="task">🙋 New at CYG</div>
+<input class="nameInput" placeholder="Enter name">
+<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
+<img class="photo">
+</div>
 
-<div class="cell">Selfie with someone taller than you</div>
-<div class="cell">Selfie with someone shorter than you</div>
-<div class="cell">Selfie with someone whose birthday is this month</div>
-<div class="cell">Selfie with someone wearing white</div>
-<div class="cell">Selfie with someone you just met today</div>
+<div class="card">
+<div class="task">📏 About the same height as you</div>
+<input class="nameInput" placeholder="Enter name">
+<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
+<img class="photo">
+</div>
+
+<div class="card">
+<div class="task">🏠 Lives alone</div>
+<input class="nameInput" placeholder="Enter name">
+<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
+<img class="photo">
+</div>
+
+<div class="card">
+<div class="task">🎨 Wearing his/her favorite color</div>
+<input class="nameInput" placeholder="Enter name">
+<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
+<img class="photo">
+</div>
+
+<div class="card">
+<div class="task">👥 MG Group Member</div>
+<input class="nameInput" placeholder="Enter name">
+<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
+<img class="photo">
+</div>
+
+<div class="card">
+<div class="task">💬 Someone you want to know more</div>
+<input class="nameInput" placeholder="Enter name">
+<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
+<img class="photo">
+</div>
+
+<div class="card">
+<div class="task">📱 Has 500+ followers on social media</div>
+<input class="nameInput" placeholder="Enter name">
+<input type="file" accept="image/*" capture="environment" onchange="uploadPhoto(this)">
+<img class="photo">
+</div>
 
 </div>
 
+<div id="success">
+🏆 Congratulations!<br>
+You completed the CYG Ice Breaker!
+</div>
+
 <script>
-document.querySelectorAll('.cell').forEach(cell=>{
-    cell.addEventListener('click',()=>{
-        cell.classList.toggle('done');
+function uploadPhoto(input){
+
+    const file = input.files[0];
+    if(!file) return;
+
+    const card = input.closest('.card');
+    const img = card.querySelector('.photo');
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+        img.src = e.target.result;
+        img.style.display = 'block';
+
+        const name =
+            card.querySelector('.nameInput').value.trim();
+
+        if(name !== ""){
+            card.classList.add('completed');
+        }
+
+        updateProgress();
+    };
+
+    reader.readAsDataURL(file);
+}
+
+document.querySelectorAll('.nameInput').forEach(input=>{
+    input.addEventListener('change',()=>{
+        const card = input.closest('.card');
+        const img = card.querySelector('.photo');
+
+        if(img.src && input.value.trim()!==""){
+            card.classList.add('completed');
+        }
+
+        updateProgress();
     });
 });
+
+function updateProgress(){
+
+    const completed =
+        document.querySelectorAll('.completed').length;
+
+    document.getElementById('progress').innerHTML =
+        "Completed: " + completed + " / 10";
+
+    if(completed === 10){
+        document.getElementById('success').style.display =
+            "block";
+    }
+}
 </script>
 
 </body>
